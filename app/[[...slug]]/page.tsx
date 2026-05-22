@@ -13,8 +13,21 @@ import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { gitConfig } from '@/lib/shared';
 
+const overviewUrl = '/getting-started/overview';
+
 export default async function Page(props: PageProps<'/[[...slug]]'>) {
   const params = await props.params;
+  if (!params.slug || params.slug.length === 0) {
+    return (
+      <>
+        <meta httpEquiv="refresh" content={`0; url=${overviewUrl}`} />
+        <link rel="canonical" href={overviewUrl} />
+        <p className="p-8">
+          Redirecting to <a href={overviewUrl}>{overviewUrl}</a>…
+        </p>
+      </>
+    );
+  }
   const page = source.getPage(params.slug);
   if (!page) {
     notFound();
@@ -47,11 +60,14 @@ export default async function Page(props: PageProps<'/[[...slug]]'>) {
 }
 
 export async function generateStaticParams() {
-  return source.generateParams();
+  return [{ slug: [] as string[] }, ...source.generateParams()];
 }
 
 export async function generateMetadata(props: PageProps<'/[[...slug]]'>): Promise<Metadata> {
   const params = await props.params;
+  if (!params.slug || params.slug.length === 0) {
+    return {};
+  }
   const page = source.getPage(params.slug);
   if (!page) {
     notFound();
