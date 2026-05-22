@@ -1,0 +1,15 @@
+{
+  "title": "CLI",
+  "pages": [
+    "index",
+    "auth",
+    "init",
+    "install",
+    "ls",
+    "outdated",
+    "publish",
+    "uninstall",
+    "whoami",
+    "why"
+  ]
+}

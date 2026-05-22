@@ -1,0 +1,10 @@
+{
+  "title": "Guides",
+  "pages": [
+    "authentication",
+    "publishing",
+    "ci",
+    "dependency-management",
+    "runtime-compatibility"
+  ]
+}

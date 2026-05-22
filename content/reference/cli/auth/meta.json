@@ -1,0 +1,4 @@
+{
+  "title": "wpm auth",
+  "pages": ["index", "login", "logout"]
+}

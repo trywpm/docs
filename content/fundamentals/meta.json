@@ -1,0 +1,12 @@
+{
+  "title": "Fundamentals",
+  "pages": [
+    "wpm-json",
+    "wpm-lock",
+    "wpmignore",
+    "dependencies",
+    "package-types",
+    "runtime",
+    "registry"
+  ]
+}

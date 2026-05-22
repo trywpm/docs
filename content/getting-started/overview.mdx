@@ -1,0 +1,119 @@
+---
+title: Overview
+description:
+  Get started with wpm for WordPress plugins and themes, including core
+  commands, project files, and your first install in under a minute.
+---
+
+wpm is an open source package manager for WordPress plugins and themes.
+
+It's built in Go for performance and reliability, with a globally distributed
+registry powered by Cloudflare Workers for fast installs around the world.
+
+wpm makes WordPress dependencies reproducible, shareable, and easy to manage.
+
+<Callout type="info" title="Important">
+  wpm is in active, early development. Expect breaking changes to CLI flags and
+  to the `wpm.lock` format before we reach a stable 1.0 release. Significant
+  changes are called out in release notes.
+</Callout>
+
+## Why wpm?
+
+- Built for WordPress out of the box. No extra configuration required.
+- Plugins, themes, and mu-plugins are first-class package types.
+- Dependency resolution works automatically.
+- Reproducible installs with `wpm.lock`.
+- Built-in package integrity and supply chain security checks.
+- Fast installs and reliable caching.
+- Fully open source.
+
+For the longer rationale, a concrete comparison with Composer, and the design
+choices behind wpm, see [Why wpm](why-wpm).
+
+## Quick install
+
+### Linux and macOS
+
+```bash
+curl -fsSL https://wpm.so/install | bash
+```
+
+### Windows (PowerShell)
+
+```powershell
+irm https://wpm.so/install.ps1 | iex
+```
+
+For Docker, `go install`, source builds, and shell completions, see the
+[installation guide](installation).
+
+After installation, verify that wpm is available on your system path:
+
+```bash
+wpm --version
+```
+
+## First steps
+
+Create a new project:
+
+```bash
+mkdir my-wp-project
+cd my-wp-project
+
+wpm init -y
+```
+
+Install dependencies:
+
+```bash
+wpm install akismet hello-dolly
+```
+
+wpm downloads the packages into `wp-content/plugins/` and records the exact
+versions in `wpm.lock`.
+
+Inspect the dependency tree:
+
+```bash
+wpm ls
+```
+
+## Learn wpm
+
+<Cards>
+  <Card title="Why wpm?" href="/getting-started/why-wpm" description="The longer rationale and design choices." />
+  <Card title="Installation" href="/getting-started/installation" description="Every install method, in detail." />
+  <Card title="First project" href="/getting-started/first-project" description="A ten-minute walkthrough." />
+</Cards>
+
+### Fundamentals
+
+Learn how the wpm ecosystem works:
+
+- [Dependencies](../fundamentals/dependencies)
+- [`wpm.json`](../fundamentals/wpm-json)
+- [`wpm.lock`](../fundamentals/wpm-lock)
+- [Runtime compatibility](../fundamentals/runtime)
+- [Package types](../fundamentals/package-types)
+- [Registry](../fundamentals/registry)
+
+### Guides
+
+Common workflows and real-world usage:
+
+- [Authentication](../guides/authentication)
+- [Publishing](../guides/publishing)
+- [CI/CD](../guides/ci)
+
+### Reference
+
+- [CLI reference](../reference/cli)
+- [Glossary](../reference/glossary)
+
+## Community
+
+- GitHub: https://github.com/trywpm/cli
+- Issues: https://github.com/trywpm/cli/issues
+- Discussions: https://github.com/trywpm/cli/discussions
