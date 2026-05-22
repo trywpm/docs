@@ -8,6 +8,7 @@ node_modules/
 !components
 !content
 !lib
+!public
 
 !.editorconfig
 !.gitignore
