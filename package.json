@@ -33,7 +33,7 @@
     "tailwindcss": "4.3.0",
     "typescript": "6.0.3",
     "vite-plus": "0.1.22",
-    "wrangler": "^4.94.0"
+    "wrangler": "4.94.0"
   },
   "packageManager": "pnpm@11.2.2"
 }
