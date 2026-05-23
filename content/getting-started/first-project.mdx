@@ -29,7 +29,7 @@ packages installed: two production dependencies and one dev dependency, all
 locked to specific versions. You'll also learn how to inspect dependencies,
 update packages, and publish your project.
 
-## Step 1: Scaffold a project
+## Scaffold a project [step]
 
 Make an empty directory and run `wpm init -y --type plugin`:
 
@@ -59,7 +59,7 @@ added a default license. You can add everything else later as your project
 grows. See the [`wpm.json` reference](../fundamentals/wpm-json) for the full
 list of fields.
 
-## Step 2: Install production dependencies
+## Install production dependencies [step]
 
 `wpm install` adds packages to your `wpm.json` and downloads them into
 `wp-content/plugins/`. You can install several at once:
@@ -80,7 +80,7 @@ wpm wrote two things just now: a `dependencies` block in `wpm.json`, and a new
 Commit `wpm.lock` to version control alongside `wpm.json`. This keeps installs
 consistent across machines and CI.
 
-## Step 3: Install development dependencies
+## Install development dependencies [step]
 
 For tools you only need during development, use `-D`:
 
@@ -97,7 +97,7 @@ wpm adds these packages to `devDependencies`.
 
 Later, you can skip them in production with `wpm install --no-dev`.
 
-## Step 4: Inspect the tree
+## Inspect the tree [step]
 
 `wpm ls` shows what's installed:
 
@@ -117,7 +117,7 @@ my-first-plugin (dependencies)
 └─ akismet@5.3.1
 ```
 
-## Step 5: Check for updates
+## Check for updates [step]
 
 `wpm outdated` shows outdated packages. It labels each update as major, minor,
 or patch:
@@ -139,7 +139,7 @@ $ wpm install akismet@5.4.0
 
 wpm updates both `wpm.json` and `wpm.lock` for you.
 
-## Step 6: Publish (optional)
+## Publish (optional) [step]
 
 If you have a registry account, you can publish your project. Skip this step if
 you don't have an account yet.
