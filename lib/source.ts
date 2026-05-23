@@ -3,7 +3,7 @@ import { createElement } from 'react';
 import { docs } from 'collections/server';
 import { loader } from 'fumadocs-core/source';
 
-import { docsContentRoute, docsImageRoute, docsRoute } from './shared';
+import { docsContentRoute, docsImageRoute, docsPathPrefix, docsRoute } from './shared';
 
 function isLucideIcon(name: string): name is keyof typeof icons {
   return name in icons;
@@ -58,7 +58,7 @@ export function getPageImage(page: (typeof source)['$inferPage']) {
 
   return {
     segments,
-    url: `${docsImageRoute}/${segments.join('/')}`,
+    url: `${docsPathPrefix}${docsImageRoute}/${segments.join('/')}`,
   };
 }
 
@@ -67,7 +67,7 @@ export function getPageMarkdownUrl(page: (typeof source)['$inferPage']) {
 
   return {
     segments,
-    url: `${docsContentRoute}/${segments.join('/')}`,
+    url: `${docsPathPrefix}${docsContentRoute}/${segments.join('/')}`,
   };
 }
 
