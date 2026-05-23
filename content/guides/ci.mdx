@@ -77,7 +77,7 @@ dev-only packages and removes them from disk if they're there.
 
 A typical workflow for a wpm-backed project:
 
-```yaml
+```yaml title=".github/workflows/build.yml"
 name: build
 
 on:
@@ -134,7 +134,7 @@ publish:
 
 ## GitLab CI
 
-```yaml
+```yaml title=".gitlab-ci.yml"
 variables:
   CI: "true"
   NO_COLOR: "1"
@@ -202,7 +202,7 @@ with a clear error in the log.
 
 If your build container is `trywpm/cli`, wpm is already inside. Just run it:
 
-```dockerfile
+```dockerfile title="Dockerfile"
 FROM trywpm/cli AS deps
 WORKDIR /work
 COPY wpm.json wpm.lock ./

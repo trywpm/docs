@@ -30,7 +30,7 @@ The rest of this page covers each field in detail and how they cooperate during
 `requires.wp` and `requires.php` are SemVer constraint strings. Every package on
 the registry has them, so consumers can see what hosts you support.
 
-```json
+```json title="wpm.json"
 {
 	"requires": {
 		"wp": ">=6.0",
@@ -59,7 +59,7 @@ your project unless you opt in (see below).
 
 `config.runtime` is your project's declared host environment:
 
-```json
+```json title="wpm.json"
 {
 	"config": {
 		"runtime": {
@@ -99,7 +99,7 @@ without testing compatibility.
 A worked example. You're building `my-plugin`. You target WordPress 6.9 and PHP
 8.2:
 
-```json
+```json title="wpm.json"
 {
 	"name": "my-plugin",
 	"version": "1.0.0",
