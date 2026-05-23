@@ -183,18 +183,28 @@ new number.
 
 A simple flow for a stable package:
 
+### Make changes and run tests [step]
+
 ```sh
-# 1. Make changes, run tests
 $ vim src/main.php
 $ ./vendor/bin/phpunit
+```
 
-# 2. Bump the version
+### Bump the version [step]
+
+```sh
 $ vim wpm.json   # 1.0.0 → 1.0.1 for a bugfix
+```
 
-# 3. Preview
+### Preview the publish [step]
+
+```sh
 $ wpm publish --verbose --dry-run
+```
 
-# 4. Publish for real
+### Publish for real [step]
+
+```sh
 $ wpm publish
 ```
 

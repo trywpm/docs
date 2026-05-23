@@ -165,14 +165,24 @@ runner), use a separate `--config` directory per identity. See the
 
 The recommended rotation process:
 
-1. Issue a new token from the registry's web interface.
-2. On every machine and CI runner that uses the old token, run `wpm auth login`
-   (or update the `WPM_TOKEN` secret) with the new value.
-3. Verify each one with `wpm whoami`.
-4. Revoke the old token from the registry.
+### Issue a new token [step]
 
-`wpm whoami` is handy during rotation. It hits the registry without changing
+Create a new personal access token from the registry's web interface.
+
+### Update every machine and runner [step]
+
+On every machine and CI runner that uses the old token, run `wpm auth login`
+(or update the `WPM_TOKEN` secret) with the new value.
+
+### Verify each one [step]
+
+Run `wpm whoami` on each machine. It hits the registry without changing
 anything, so it's a safe way to confirm that a token works.
+
+### Revoke the old token [step]
+
+From the registry's web interface, revoke the previous token so it can no
+longer be used.
 
 ## Troubleshooting
 
