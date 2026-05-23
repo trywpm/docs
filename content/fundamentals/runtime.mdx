@@ -1,11 +1,11 @@
 ---
 title: Runtime compatibility
-description:
-  How `requires` and `config.runtime` define WordPress and PHP compatibility,
+description: How `requires` and `config.runtime` define WordPress and PHP compatibility,
   what your package supports and what you develop against.
 ---
 
 import { Boxes, FileJson, PackagePlus } from 'lucide-react';
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 
 `wpm.json` has two fields that talk about WordPress and PHP versions:
 
@@ -32,10 +32,10 @@ the registry has them, so consumers can see what hosts you support.
 
 ```json title="wpm.json"
 {
-	"requires": {
-		"wp": ">=6.0",
-		"php": ">=7.4 <8.4"
-	}
+  "requires": {
+    "wp": ">=6.0",
+    "php": ">=7.4 <8.4"
+  }
 }
 ```
 
@@ -61,12 +61,12 @@ your project unless you opt in (see below).
 
 ```json title="wpm.json"
 {
-	"config": {
-		"runtime": {
-			"wp": "6.9",
-			"php": "8.2"
-		}
-	}
+  "config": {
+    "runtime": {
+      "wp": "6.9",
+      "php": "8.2"
+    }
+  }
 }
 ```
 
@@ -101,22 +101,22 @@ A worked example. You're building `my-plugin`. You target WordPress 6.9 and PHP
 
 ```json title="wpm.json"
 {
-	"name": "my-plugin",
-	"version": "1.0.0",
-	"type": "plugin",
-	"requires": {
-		"wp": ">=6.0",
-		"php": ">=7.4"
-	},
-	"dependencies": {
-		"akismet": "5.3.1"
-	},
-	"config": {
-		"runtime": {
-			"wp": "6.9",
-			"php": "8.2"
-		}
-	}
+  "name": "my-plugin",
+  "version": "1.0.0",
+  "type": "plugin",
+  "requires": {
+    "wp": ">=6.0",
+    "php": ">=7.4"
+  },
+  "dependencies": {
+    "akismet": "5.3.1"
+  },
+  "config": {
+    "runtime": {
+      "wp": "6.9",
+      "php": "8.2"
+    }
+  }
 }
 ```
 
@@ -156,16 +156,24 @@ configuration changes are needed.
 
 ## Troubleshooting
 
-- `package <name>@<version> incompatible: requires <X> <constraint>, but runtime <X> version is <Y>`:
-  a dependency in your tree declares a runtime requirement your `config.runtime`
-  does not meet. Either bump your runtime, swap the dependency for a version
-  that supports your target, or remove the runtime block to opt out of the
-  check.
-- `invalid <X> requirement in package <pkg>`: the package's `requires.<wp|php>`
-  is not a valid SemVer constraint. This is a bug in the dependency's manifest;
-  report it to the maintainer.
-- `invalid runtime <X> version provided`: `config.runtime.<wp|php>` is not a
-  SemVer version. Fix the value in your `wpm.json`.
+<Accordions>
+  <Accordion title="package <name>@<version> incompatible: requires <X> <constraint>, but runtime <X> version is <Y>">
+    A dependency in your tree declares a runtime requirement your
+    `config.runtime` does not meet. Either bump your runtime, swap the
+    dependency for a version that supports your target, or remove the runtime
+    block to opt out of the check.
+  </Accordion>
+
+  <Accordion title="invalid <X> requirement in package <pkg>">
+    The package's `requires.<wp|php>` is not a valid SemVer constraint. This is
+    a bug in the dependency's manifest; report it to the maintainer.
+  </Accordion>
+
+  <Accordion title="invalid runtime <X> version provided">
+    `config.runtime.<wp|php>` is not a SemVer version. Fix the value in your
+    `wpm.json`.
+  </Accordion>
+</Accordions>
 
 ## Related
 

@@ -5,6 +5,7 @@ description:
   multiple registry accounts from a single machine.
 ---
 
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 import { Cloud, GitBranch, KeyRound, User } from 'lucide-react';
 
 This page covers everything you need to know about wpm tokens: how to get one,
@@ -186,19 +187,30 @@ longer be used.
 
 ## Troubleshooting
 
-- **`token cannot be empty`**: you pressed Enter at the interactive prompt
-  without typing anything. Re-run `wpm auth login`.
-- **`failed to retrieve username`**: the registry accepted the request but
-  returned an empty username. This usually means the registry is misconfigured.
-  Report it to the registry's operator.
-- **Authentication errors from the registry**: the token is unrecognized. It may
-  have been revoked, may have expired, or may be for a different registry. Run
-  `wpm whoami` against the registry you intend to use, and confirm the token is
-  current.
-- **`user must be logged in to perform this action`** (during `wpm publish`): no
-  token is stored locally. Run `wpm auth login` or set `WPM_TOKEN`. Note that
-  `publish` does not read `WPM_TOKEN` as a fallback in the same way other
-  commands do; you need to be logged in.
+<Accordions>
+  <Accordion title="token cannot be empty">
+    You pressed Enter at the interactive prompt without typing anything. Re-run
+    `wpm auth login`.
+  </Accordion>
+
+  <Accordion title="failed to retrieve username">
+    The registry accepted the request but returned an empty username. This
+    usually means the registry is misconfigured. Report it to the registry's
+    operator.
+  </Accordion>
+
+  <Accordion title="Authentication errors from the registry">
+    The token is unrecognized. It may have been revoked, may have expired, or
+    may be for a different registry. Run `wpm whoami` against the registry you
+    intend to use, and confirm the token is current.
+  </Accordion>
+
+  <Accordion title="user must be logged in to perform this action">
+    Shown during `wpm publish`: no token is stored locally. Run `wpm auth login`
+    or set `WPM_TOKEN`. Note that `publish` does not read `WPM_TOKEN` as a
+    fallback in the same way other commands do; you need to be logged in.
+  </Accordion>
+</Accordions>
 
 ## Related
 
