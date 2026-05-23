@@ -1,3 +1,5 @@
+import jsonSchema from 'fumadocs-mdx/plugins/json-schema';
+import lastModified from 'fumadocs-mdx/plugins/last-modified';
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
 
@@ -7,6 +9,8 @@ export const docs = defineDocs({
     schema: pageSchema,
     postprocess: {
       includeProcessedMarkdown: true,
+      extractLinkReferences: true,
+      valueToExport: ['elementIds'],
     },
   },
   meta: {
@@ -15,5 +19,10 @@ export const docs = defineDocs({
 });
 
 export default defineConfig({
-  mdxOptions: {},
+  plugins: [
+    jsonSchema({
+      insert: true,
+    }),
+    lastModified(),
+  ],
 });

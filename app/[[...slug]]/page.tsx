@@ -1,9 +1,10 @@
 import { getPageImage, getPageMarkdownUrl, source } from '@/lib/source';
 import {
   DocsBody,
-  DocsDescription,
   DocsPage,
   DocsTitle,
+  PageLastUpdate,
+  DocsDescription,
   MarkdownCopyButton,
   ViewOptionsPopover,
 } from 'fumadocs-ui/layouts/docs/page';
@@ -37,7 +38,12 @@ export default async function Page(props: PageProps<'/[[...slug]]'>) {
   const markdownUrl = getPageMarkdownUrl(page).url;
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage
+      toc={page.data.toc}
+      tableOfContent={{
+        style: 'clerk',
+      }}
+    >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className="mb-0">{page.data.description}</DocsDescription>
       <div className="flex flex-row gap-2 items-center border-b pb-6">
@@ -50,11 +56,11 @@ export default async function Page(props: PageProps<'/[[...slug]]'>) {
       <DocsBody>
         <MDX
           components={getMDXComponents({
-            // this allows you to link to other pages with relative file paths
             a: createRelativeLink(source, page),
           })}
         />
       </DocsBody>
+      {page.data.lastModified && <PageLastUpdate date={page.data.lastModified} />}
     </DocsPage>
   );
 }
