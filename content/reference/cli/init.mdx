@@ -49,10 +49,10 @@ automatically so the command can run without interaction.
 | type    | `plugin` (prompt only) |
 
 <Callout type="info" title="Note">
-  When you run `wpm init -y` without `--type`, the `type` field is left
-  unset. Validation is skipped for that field in the `-y` path, so the command
-  succeeds, but you will need to set `type` manually before publishing. Prefer
-  `wpm init -y --type plugin` (or `theme`, `mu-plugin`) when scripting.
+When you run `wpm init -y` without `--type`, the `type` field is left
+unset. Validation is skipped for that field in the `-y` path, so the command
+succeeds, but you will need to set `type` manually before publishing. Prefer
+`wpm init -y --type plugin` (or `theme`, `mu-plugin`) when scripting.
 </Callout>
 
 ### Existing project mode (`--existing`)
@@ -110,7 +110,7 @@ errors. Pass `--version` to recover.
 
 Both modes validate `name`, `version`, `type`, and `license` before writing
 `wpm.json`. The full schema and its rules live in
-[`wpm.json` reference](../../fundamentals/wpm-json).
+[`wpm.json` reference](../../fundamentals/wpm-json.md).
 
 ### Troubleshooting
 
@@ -132,14 +132,14 @@ Both modes validate `name`, `version`, `type`, and `license` before writing
 
 ## Options
 
-| Option       | Default | Description                             |
-| ------------ | ------- | --------------------------------------- |
-| `--existing` |         | Init wpm.json for an existing project   |
-| `--license`  |         | Package license                         |
-| `--name`     |         | Package name                            |
-| `--type`     |         | Package type (plugin, theme, mu-plugin) |
-| `--version`  |         | Semver-compliant version                |
-| `-y, --yes`  |         | Skip prompts and use default values     |
+| Option | Default | Description |
+| --- | --- | --- |
+| `--existing` |  | Init wpm.json for an existing project |
+| `--license` |  | Package license |
+| `--name` |  | Package name |
+| `--type` |  | Package type (plugin, theme, mu-plugin) |
+| `--version` |  | Semver-compliant version |
+| `-y, --yes` |  | Skip prompts and use default values |
 
 ## Examples
 

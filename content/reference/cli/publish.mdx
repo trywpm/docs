@@ -22,7 +22,7 @@ Before publishing, make sure:
   file.
 - `wpm.json` exists and is valid. Required fields (`name`, `version`, `type`,
   and so on) are checked before anything is packed.
-- `wpm.json` does *not* set `"private": true`. That flag exists specifically to
+- `wpm.json` does _not_ set `"private": true`. That flag exists specifically to
   block accidental publishing; remove it (or use a separate config) when you are
   ready to release.
 
@@ -77,18 +77,18 @@ or leave it at `private` for organization-only releases. Any value other than
 `public` or `private` is rejected.
 
 <Callout type="info" title="Important">
-  `--access private` is not the same as `"private": true` in
-  `wpm.json`. `--access private` publishes the package with private visibility
-  on the registry. `"private": true` blocks publishing entirely. See
-  [wpm registry](../../fundamentals/registry) for the full distinction.
+`--access private` is not the same as `"private": true` in
+`wpm.json`. `--access private` publishes the package with private visibility
+on the registry. `"private": true` blocks publishing entirely. See
+[wpm registry](../../fundamentals/registry.md) for the full distinction.
 </Callout>
 
 ### Republishing a version
 
 <Callout type="error" title="Caution">
-  A published version cannot be replaced. The registry rejects any
-  publish for a version it already holds, and yanked versions stay reserved (you
-  cannot reuse the number for a new build).
+A published version cannot be replaced. The registry rejects any
+publish for a version it already holds, and yanked versions stay reserved (you
+cannot reuse the number for a new build).
 </Callout>
 
 Each `version` in `wpm.json` is single-use. To release again, bump the `version`
@@ -101,9 +101,9 @@ listing of each file as it's added, with its size. Use it when you want to
 confirm that `.wpmignore` is excluding the right things.
 
 <Callout type="info" title="Tip">
-  Combine `--verbose --dry-run` to preview the exact file list and the
-  final tarball size before a real publish. This is the safest way to catch a
-  stray `node_modules` directory or a forgotten secrets file.
+Combine `--verbose --dry-run` to preview the exact file list and the
+final tarball size before a real publish. This is the safest way to catch a
+stray `node_modules` directory or a forgotten secrets file.
 </Callout>
 
 ### Troubleshooting
@@ -130,12 +130,12 @@ confirm that `.wpmignore` is excluding the right things.
 
 ## Options
 
-| Option         | Default   | Description                                                         |
-| -------------- | --------- | ------------------------------------------------------------------- |
-| `-a, --access` | `private` | Set the package access level to either public or private            |
-| `--dry-run`    |           | Perform a publish operation without actually publishing the package |
-| `--tag`        | `latest`  | Set the package tag                                                 |
-| `--verbose`    |           | Enable verbose output                                               |
+| Option | Default | Description |
+| --- | --- | --- |
+| `-a, --access` | `private` | Set the package access level to either public or private |
+| `--dry-run` |  | Perform a publish operation without actually publishing the package  |
+| `--tag` | `latest` | Set the package tag |
+| `--verbose` |  | Enable verbose output |
 
 ## Examples
 

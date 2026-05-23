@@ -6,9 +6,9 @@ description: Package Manager for WordPress ecosystem
 ## Description
 
 <Callout type="info" title="Important">
-  wpm is in active development and pre-1.0. Expect occasional
-  breaking changes to CLI flags and to the `wpm.lock` format until 1.0.
-  Significant changes are called out in release notes.
+wpm is in active development and pre-1.0. Expect occasional
+breaking changes to CLI flags and to the `wpm.lock` format until 1.0.
+Significant changes are called out in release notes.
 </Callout>
 
 `wpm` is a package manager for the WordPress ecosystem. It treats plugins,
@@ -109,25 +109,25 @@ when the first signal is caught and graceful shutdown is taking too long.
 ### Where to go next
 
 - New to wpm? Start with the
-  [getting started](../../getting-started/first-project) walkthrough.
-- Releasing a package? See the [publishing guide](../../guides/publishing).
-- Setting up CI? See the [CI/CD guide](../../guides/ci).
-- File-format references: [`wpm.json`](../../fundamentals/wpm-json),
-  [`wpm.lock`](../../fundamentals/wpm-lock), and
-  [`.wpmignore`](../../fundamentals/wpmignore).
-- Concept references: [authentication](../../guides/authentication),
-  [package types](../../fundamentals/package-types), and
-  [registry concepts](../../fundamentals/registry).
-- Looking up a term? See the [glossary](../glossary).
+  [getting started](../../getting-started/first-project.md) walkthrough.
+- Releasing a package? See the [publishing guide](../../guides/publishing.md).
+- Setting up CI? See the [CI/CD guide](../../guides/ci.md).
+- File-format references: [`wpm.json`](../../fundamentals/wpm-json.md),
+  [`wpm.lock`](../../fundamentals/wpm-lock.md), and
+  [`.wpmignore`](../../fundamentals/wpmignore.md).
+- Concept references: [authentication](../../guides/authentication.md),
+  [package types](../../fundamentals/package-types.md), and
+  [registry concepts](../../fundamentals/registry.md).
+- Looking up a term? See the [glossary](../glossary.md).
 
 ## Options
 
-| Option            | Default                  | Description                                                       |
-| ----------------- | ------------------------ | ----------------------------------------------------------------- |
-| `--config`        | `/home/thelovekesh/.wpm` | Location of client config files                                   |
-| `-D, --debug`     |                          | Enable debug mode                                                 |
-| `-l, --log-level` | `info`                   | Set the logging level ("debug", "info", "warn", "error", "fatal") |
-| `--registry`      | `registry.wpm.so`        | Set specific registry to use                                      |
+| Option | Default | Description |
+| --- | --- | --- |
+| `--config` | `/home/thelovekesh/.wpm` | Location of client config files |
+| `-D, --debug` |  | Enable debug mode |
+| `-l, --log-level` | `info` | Set the logging level ("debug", "info", "warn", "error", "fatal") |
+| `--registry` | `registry.wpm.so` | Set specific registry to use |
 
 ## Examples
 
@@ -169,18 +169,18 @@ $ CI=true NO_COLOR=1 wpm install
 ### First five minutes with wpm
 
 For a full walkthrough from scaffold to first publish, see
-[Getting started](../../getting-started/first-project).
+[Getting started](../../getting-started/first-project.md).
 
 ## Subcommands
 
-| Command                        | Description                                                        |
-| ------------------------------ | ------------------------------------------------------------------ |
-| [`wpm auth`](./auth)           | Authenticate with the wpm registry                                 |
-| [`wpm init`](./init)           | Initialize a new WordPress package or init wpm in existing project |
-| [`wpm install`](./install)     | Install project dependencies and add new packages                  |
-| [`wpm ls`](./ls)               | List installed dependencies                                        |
-| [`wpm outdated`](./outdated)   | Check for outdated dependencies                                    |
-| [`wpm publish`](./publish)     | Publish a package to the wpm registry                              |
-| [`wpm uninstall`](./uninstall) | Remove dependencies from the project                               |
-| [`wpm whoami`](./whoami)       | Display the current user                                           |
-| [`wpm why`](./why)             | Show why a package is installed                                    |
+| Command | Description |
+| --- | --- |
+| [`wpm auth`](./auth/index.mdx) | Authenticate with the wpm registry |
+| [`wpm init`](./init.mdx) | Initialize a new WordPress package or init wpm in existing project |
+| [`wpm install`](./install.mdx) | Install project dependencies and add new packages |
+| [`wpm ls`](./ls.mdx) | List installed dependencies |
+| [`wpm outdated`](./outdated.mdx) | Check for outdated dependencies |
+| [`wpm publish`](./publish.mdx) | Publish a package to the wpm registry |
+| [`wpm uninstall`](./uninstall.mdx) | Remove dependencies from the project |
+| [`wpm whoami`](./whoami.mdx) | Display the current user |
+| [`wpm why`](./why.mdx) | Show why a package is installed |
