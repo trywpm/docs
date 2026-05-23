@@ -5,6 +5,7 @@ description:
   completion setup and where wpm stores its files.
 ---
 
+import { File, Files, Folder } from 'fumadocs-ui/components/files';
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 import { FileJson, GitBranch, Rocket } from 'lucide-react';
 
@@ -218,18 +219,46 @@ problem persists, confirm that the install path is in `PATH`:
 
 ## Where wpm keeps its files
 
-| Path                      | Purpose                                          |
-| :------------------------ | :----------------------------------------------- |
-| `~/.wpm/config.json`      | Client config: auth token, default user.         |
-| `~/.wpm/cache/`           | Registry response cache and download cache.      |
-| `~/.wpm/cache/install/`   | HTTP cache for install-time GET requests.        |
-| Per project `wpm.json`    | Package manifest.                                |
-| Per project `wpm.lock`    | Resolved dependency snapshot.                    |
-| Per project `wp-content/` | Where dependencies are extracted (configurable). |
+wpm stores client-wide state in your home directory and per-project state at
+the project root.
+
+### Config directory
+
+Holds your auth token, default user, and the registry response/install cache.
+
+<Files>
+  <Folder name="~/.wpm" defaultOpen>
+    <File name="config.json" />
+    <Folder name="cache" defaultOpen>
+      <Folder name="install" />
+    </Folder>
+  </Folder>
+</Files>
+
+- `config.json` — client config: auth token, default user.
+- `cache/` — registry response cache and download cache.
+- `cache/install/` — HTTP cache for install-time GET requests.
 
 The config directory can be moved with the global `--config` flag or the
 `WPM_CONFIG` environment variable. To clear the registry response cache, delete
 `~/.wpm/cache`; the lockfile and `wp-content/` are untouched.
+
+### Project files
+
+Created and maintained by wpm in each project you initialize.
+
+<Files>
+  <Folder name="your-project" defaultOpen>
+    <File name="wpm.json" />
+    <File name="wpm.lock" />
+    <Folder name="wp-content" />
+  </Folder>
+</Files>
+
+- `wpm.json` — the package manifest.
+- `wpm.lock` — resolved dependency snapshot.
+- `wp-content/` — where dependencies are extracted (configurable via
+  `config.content-dir`).
 
 ## Upgrade
 

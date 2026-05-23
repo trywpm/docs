@@ -5,6 +5,7 @@ description:
   a WordPress directory, and when to use each one.
 ---
 
+import { File, Files, Folder } from 'fumadocs-ui/components/files';
 import { FileJson, FolderPlus, PackagePlus } from 'lucide-react';
 
 Every wpm package has a `type` field. It tells wpm how to install the package,
@@ -61,11 +62,22 @@ When `wpm install` extracts a dependency, it reads the `type` from that
 dependency's manifest and picks the matching subdirectory inside your project's
 content directory (default `wp-content/`):
 
-| Dependency `type` | Extracted into                  |
-| :---------------- | :------------------------------ |
-| `plugin`          | `wp-content/plugins/<name>/`    |
-| `theme`           | `wp-content/themes/<name>/`     |
-| `mu-plugin`       | `wp-content/mu-plugins/<name>/` |
+<Files>
+  <Folder name="wp-content" defaultOpen>
+    <Folder name="plugins" defaultOpen>
+      <Folder name="<name>/" />
+    </Folder>
+    <Folder name="themes" defaultOpen>
+      <Folder name="<name>/" />
+    </Folder>
+    <Folder name="mu-plugins" defaultOpen>
+      <Folder name="<name>/" />
+    </Folder>
+  </Folder>
+</Files>
+
+A `plugin` extracts under `plugins/`, a `theme` under `themes/`, and a
+`mu-plugin` under `mu-plugins/`.
 
 wpm uses each dependency's _own_ type to pick the path, not your project's type.
 A theme can depend on a plugin; that plugin still extracts into
