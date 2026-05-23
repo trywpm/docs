@@ -11,6 +11,8 @@ node_modules/
 !lib
 !public
 
+!go.mod
+!go.sum
 !.editorconfig
 !.gitignore
 !.node-version
