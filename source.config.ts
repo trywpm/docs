@@ -2,6 +2,7 @@ import jsonSchema from 'fumadocs-mdx/plugins/json-schema';
 import lastModified from 'fumadocs-mdx/plugins/last-modified';
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
+import { remarkSteps } from 'fumadocs-core/mdx-plugins';
 
 export const docs = defineDocs({
   dir: 'content',
@@ -25,4 +26,7 @@ export default defineConfig({
     }),
     lastModified(),
   ],
+  mdxOptions: {
+    remarkPlugins: [remarkSteps],
+  },
 });
