@@ -5,6 +5,15 @@ description:
   commands you'll use most often.
 ---
 
+import {
+  Boxes,
+  CircleHelp,
+  Clock,
+  List,
+  PackageMinus,
+  PackagePlus,
+} from 'lucide-react';
+
 This guide covers the day-to-day work of adding, removing, updating, and
 inspecting your project's dependencies.
 
@@ -140,10 +149,41 @@ my-plugin (dependencies)
 
 ## Related
 
-- [Dependencies](../fundamentals/dependencies): the schema, the rules, and why
-  wpm rejects version ranges.
-- [`wpm install`](../reference/cli/install): every flag and example.
-- [`wpm uninstall`](../reference/cli/uninstall): every flag.
-- [`wpm ls`](../reference/cli/ls), [`wpm why`](../reference/cli/why),
-  [`wpm outdated`](../reference/cli/outdated): the read-only inspection
-  commands.
+<Cards>
+  <Card
+    icon={<Boxes />}
+    title="Dependencies"
+    href="/fundamentals/dependencies"
+    description="The schema, the rules, and why wpm rejects version ranges."
+  />
+  <Card
+    icon={<PackagePlus />}
+    title="wpm install"
+    href="/reference/cli/install"
+    description="Every flag and example for adding packages."
+  />
+  <Card
+    icon={<PackageMinus />}
+    title="wpm uninstall"
+    href="/reference/cli/uninstall"
+    description="Remove packages and reconcile the tree."
+  />
+  <Card
+    icon={<List />}
+    title="wpm ls"
+    href="/reference/cli/ls"
+    description="List the installed tree from the lockfile."
+  />
+  <Card
+    icon={<CircleHelp />}
+    title="wpm why"
+    href="/reference/cli/why"
+    description="Trace a package back to its root."
+  />
+  <Card
+    icon={<Clock />}
+    title="wpm outdated"
+    href="/reference/cli/outdated"
+    description="Find dependencies that are behind the registry."
+  />
+</Cards>

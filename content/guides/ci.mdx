@@ -5,6 +5,8 @@ description:
   handling and reproducible installs.
 ---
 
+import { Cloud, Download, KeyRound, Terminal } from 'lucide-react';
+
 This guide covers how to run wpm in continuous integration pipelines: GitHub
 Actions, GitLab CI, and generic shell-based runners. The patterns apply equally
 to other systems.
@@ -282,10 +284,29 @@ Before merging your CI configuration, confirm:
 
 ## Related
 
-- [Installation](../getting-started/installation): how the install script
-  works.
-- [Authentication](authentication): the token lifecycle.
-- [`wpm`](../reference/cli): the full list of global flags and environment
-  variables.
-- [wpm registry](../fundamentals/registry): dist tags and visibility settings
-  used by `wpm publish`.
+<Cards>
+  <Card
+    icon={<Download />}
+    title="Installation"
+    href="/getting-started/installation"
+    description="How the install script works."
+  />
+  <Card
+    icon={<KeyRound />}
+    title="Authentication"
+    href="/guides/authentication"
+    description="The token lifecycle."
+  />
+  <Card
+    icon={<Terminal />}
+    title="CLI reference"
+    href="/reference/cli"
+    description="The full list of global flags and environment variables."
+  />
+  <Card
+    icon={<Cloud />}
+    title="wpm registry"
+    href="/fundamentals/registry"
+    description="Dist tags and visibility settings used by `wpm publish`."
+  />
+</Cards>

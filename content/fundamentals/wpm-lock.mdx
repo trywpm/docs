@@ -5,6 +5,14 @@ description:
   installs reproducible across machines and CI.
 ---
 
+import {
+  Boxes,
+  CircleHelp,
+  FileJson,
+  List,
+  PackagePlus,
+} from 'lucide-react';
+
 `wpm.lock` records the exact dependency tree your project resolved to. It keeps
 installs identical across machines and CI runs.
 
@@ -148,9 +156,35 @@ package names in the `packages` map are rejected on load.
 
 ## Related
 
-- [`wpm.json`](wpm-json): the request that the lockfile records the answer to.
-- [Dependencies](dependencies): how the request is expressed.
-- [`wpm install`](../reference/cli/install): the command that writes the
-  lockfile.
-- [`wpm ls`](../reference/cli/ls) and [`wpm why`](../reference/cli/why): the two
-  read-only commands that work from the lockfile.
+<Cards>
+  <Card
+    icon={<FileJson />}
+    title="wpm.json"
+    href="/fundamentals/wpm-json"
+    description="The request that the lockfile records the answer to."
+  />
+  <Card
+    icon={<Boxes />}
+    title="Dependencies"
+    href="/fundamentals/dependencies"
+    description="How the request is expressed."
+  />
+  <Card
+    icon={<PackagePlus />}
+    title="wpm install"
+    href="/reference/cli/install"
+    description="The command that writes the lockfile."
+  />
+  <Card
+    icon={<List />}
+    title="wpm ls"
+    href="/reference/cli/ls"
+    description="Inspect the installed tree from the lockfile."
+  />
+  <Card
+    icon={<CircleHelp />}
+    title="wpm why"
+    href="/reference/cli/why"
+    description="Trace a package back to its root in the lockfile."
+  />
+</Cards>

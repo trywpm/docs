@@ -5,6 +5,8 @@ description:
   a WordPress directory, and when to use each one.
 ---
 
+import { FileJson, FolderPlus, PackagePlus } from 'lucide-react';
+
 Every wpm package has a `type` field. It tells wpm how to install the package,
 and it tells WordPress how to load it. Three values are supported:
 
@@ -124,8 +126,23 @@ and discovery work better.
 
 ## Related
 
-- [`wpm.json` reference](wpm-json): the schema where `type` is declared.
-- [`wpm init`](../reference/cli/init): the detection logic for existing
-  projects.
-- [`wpm install`](../reference/cli/install): how the extracted path is computed
-  at install time.
+<Cards>
+  <Card
+    icon={<FileJson />}
+    title="wpm.json reference"
+    href="/fundamentals/wpm-json"
+    description="The schema where `type` is declared."
+  />
+  <Card
+    icon={<FolderPlus />}
+    title="wpm init"
+    href="/reference/cli/init"
+    description="The detection logic for existing projects."
+  />
+  <Card
+    icon={<PackagePlus />}
+    title="wpm install"
+    href="/reference/cli/install"
+    description="How the extracted path is computed at install time."
+  />
+</Cards>

@@ -5,6 +5,8 @@ description:
   what your package supports and what you develop against.
 ---
 
+import { Boxes, FileJson, PackagePlus } from 'lucide-react';
+
 `wpm.json` has two fields that talk about WordPress and PHP versions:
 
 - **`requires`**: what your package needs from WordPress and PHP. "I need at
@@ -167,7 +169,23 @@ configuration changes are needed.
 
 ## Related
 
-- [`wpm.json` reference](wpm-json): the full schema and all field rules.
-- [`wpm install`](../reference/cli/install): where the strict check runs.
-- [Dependencies](dependencies): the difference between dependency specifiers
-  (no ranges) and `requires` constraints (ranges allowed).
+<Cards>
+  <Card
+    icon={<FileJson />}
+    title="wpm.json reference"
+    href="/fundamentals/wpm-json"
+    description="The full schema and all field rules."
+  />
+  <Card
+    icon={<PackagePlus />}
+    title="wpm install"
+    href="/reference/cli/install"
+    description="Where the strict runtime check runs."
+  />
+  <Card
+    icon={<Boxes />}
+    title="Dependencies"
+    href="/fundamentals/dependencies"
+    description="Dependency specifiers (no ranges) versus `requires` constraints (ranges allowed)."
+  />
+</Cards>

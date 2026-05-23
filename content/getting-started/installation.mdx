@@ -5,6 +5,8 @@ description:
   completion setup and where wpm stores its files.
 ---
 
+import { FileJson, GitBranch, Rocket } from 'lucide-react';
+
 wpm ships as a single static binary. There are no runtime dependencies, no PHP
 requirement on the machine that runs wpm, and no per-project toolchain. Pick the
 install method that fits your environment.
@@ -236,8 +238,23 @@ cache under `~/.wpm/cache/install`.
 
 ## Next steps
 
-- New to wpm? See [Getting started](first-project) for a 10-minute end-to-end
-  walkthrough.
-- Setting up a build pipeline? See the [CI/CD guide](../guides/ci).
-- Looking for the `wpm.json` reference? See
-  [`wpm.json`](../fundamentals/wpm-json).
+<Cards>
+  <Card
+    icon={<Rocket />}
+    title="First project"
+    href="/getting-started/first-project"
+    description="A ten-minute end-to-end walkthrough."
+  />
+  <Card
+    icon={<GitBranch />}
+    title="CI/CD guide"
+    href="/guides/ci"
+    description="Run wpm in a build pipeline."
+  />
+  <Card
+    icon={<FileJson />}
+    title="wpm.json reference"
+    href="/fundamentals/wpm-json"
+    description="Every field in the manifest."
+  />
+</Cards>

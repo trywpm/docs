@@ -5,6 +5,15 @@ description:
   use it in plugin and theme projects.
 ---
 
+import {
+  ArrowLeftRight,
+  Boxes,
+  Cloud,
+  Cog,
+  Download,
+  Rocket,
+} from 'lucide-react';
+
 Managing dependencies in a WordPress project has always been a patchwork.
 
 A mature site pulls from many places: free plugins, commercial plugins, themes
@@ -152,11 +161,20 @@ comes first; auditing for known vulnerabilities builds on top of it.
 
 wpm is one piece of a broader effort. Sister projects:
 
-- **[wp-to-wpm](https://github.com/trywpm/wp-to-wpm)**: migrates plugins and
-  themes from WordPress.org SVN to the wpm registry, designed to run as a GitHub
-  Action.
-- **[setup-wpm](https://github.com/trywpm/setup-wpm)**: a GitHub Action that
-  installs and configures the wpm CLI for your CI/CD pipelines.
+<Cards>
+  <Card
+    icon={<ArrowLeftRight />}
+    title="wp-to-wpm"
+    href="https://github.com/trywpm/wp-to-wpm"
+    description="Migrate plugins and themes from WordPress.org SVN to the wpm registry. Designed to run as a GitHub Action."
+  />
+  <Card
+    icon={<Cog />}
+    title="setup-wpm"
+    href="https://github.com/trywpm/setup-wpm"
+    description="A GitHub Action that installs and configures the wpm CLI for your CI/CD pipelines."
+  />
+</Cards>
 
 All of it is open source. Contributions, design discussions, and ecosystem
 feedback are welcome.
@@ -180,10 +198,29 @@ themes.
 
 ## Where to go next
 
-- **[Install wpm](installation)** in a single command.
-- **[First project](first-project)**: a ten-minute walkthrough from empty
-  directory to working project.
-- **[Dependencies](../fundamentals/dependencies)**: the full reasoning behind
-  exact-version pinning.
-- **[wpm registry](../fundamentals/registry)**: how it stores manifests and
-  verifies provenance.
+<Cards>
+  <Card
+    icon={<Download />}
+    title="Install wpm"
+    href="/getting-started/installation"
+    description="Get wpm on your machine in a single command."
+  />
+  <Card
+    icon={<Rocket />}
+    title="First project"
+    href="/getting-started/first-project"
+    description="A ten-minute walkthrough from empty directory to working project."
+  />
+  <Card
+    icon={<Boxes />}
+    title="Dependencies"
+    href="/fundamentals/dependencies"
+    description="The full reasoning behind exact-version pinning."
+  />
+  <Card
+    icon={<Cloud />}
+    title="wpm registry"
+    href="/fundamentals/registry"
+    description="How it stores manifests and verifies provenance."
+  />
+</Cards>

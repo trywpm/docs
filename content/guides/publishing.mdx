@@ -5,6 +5,8 @@ description:
   versioning, dist tags, visibility, and unpublishing.
 ---
 
+import { Cloud, EyeOff, FileJson, KeyRound, Upload } from 'lucide-react';
+
 This guide covers everything from your first release to taking one back: version
 numbers, dist tags, visibility, and the release lifecycle.
 
@@ -226,9 +228,35 @@ $ wpm publish            # Goes to latest
 
 ## Related
 
-- [`wpm publish`](../reference/cli/publish): every flag, with troubleshooting.
-- [wpm registry](../fundamentals/registry): tags, visibility, and the
-  difference between `private: true` and `--access private`.
-- [Authentication](authentication): tokens and CI patterns.
-- [`.wpmignore`](../fundamentals/wpmignore): syntax for the exclusion file.
-- [`wpm.json`](../fundamentals/wpm-json): the manifest schema.
+<Cards>
+  <Card
+    icon={<Upload />}
+    title="wpm publish"
+    href="/reference/cli/publish"
+    description="Every flag, with troubleshooting."
+  />
+  <Card
+    icon={<Cloud />}
+    title="wpm registry"
+    href="/fundamentals/registry"
+    description="Tags, visibility, and the difference between `private: true` and `--access private`."
+  />
+  <Card
+    icon={<KeyRound />}
+    title="Authentication"
+    href="/guides/authentication"
+    description="Tokens and CI patterns."
+  />
+  <Card
+    icon={<EyeOff />}
+    title=".wpmignore"
+    href="/fundamentals/wpmignore"
+    description="Syntax for the exclusion file."
+  />
+  <Card
+    icon={<FileJson />}
+    title="wpm.json"
+    href="/fundamentals/wpm-json"
+    description="The manifest schema."
+  />
+</Cards>

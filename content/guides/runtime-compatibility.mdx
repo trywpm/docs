@@ -5,6 +5,8 @@ description:
   the WordPress and PHP versions you target.
 ---
 
+import { Cpu, FileJson, PackagePlus } from 'lucide-react';
+
 By default, wpm doesn't check whether your dependencies are compatible with the
 WordPress and PHP versions you're running. **Strict runtime mode** turns that
 check on. This guide walks through enabling it, reading the errors, and deciding
@@ -93,7 +95,23 @@ Delete `config.runtime` from `wpm.json`, or just remove `runtime.wp` and
 
 ## Related
 
-- [Runtime compatibility](../fundamentals/runtime): the field reference and a
-  worked example.
-- [`wpm install`](../reference/cli/install): where the check runs.
-- [`wpm.json`](../fundamentals/wpm-json): the manifest schema.
+<Cards>
+  <Card
+    icon={<Cpu />}
+    title="Runtime compatibility"
+    href="/fundamentals/runtime"
+    description="The field reference and a worked example."
+  />
+  <Card
+    icon={<PackagePlus />}
+    title="wpm install"
+    href="/reference/cli/install"
+    description="Where the strict check runs."
+  />
+  <Card
+    icon={<FileJson />}
+    title="wpm.json"
+    href="/fundamentals/wpm-json"
+    description="The manifest schema."
+  />
+</Cards>

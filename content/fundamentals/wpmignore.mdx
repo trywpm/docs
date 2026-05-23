@@ -5,6 +5,8 @@ description:
   syntax you already know from `.gitignore`.
 ---
 
+import { FileJson, Upload } from 'lucide-react';
+
 `.wpmignore` is an optional file at the root of your project. It tells
 `wpm publish` which paths to exclude from the tarball that gets uploaded to the
 registry. Without it, every file in the project directory is packed.
@@ -132,7 +134,17 @@ this to confirm that the right files are in and the right files are out.
 
 ## Related
 
-- [`wpm publish`](../reference/cli/publish): the only command that reads
-  `.wpmignore`.
-- [`wpm.json`](wpm-json): the manifest whose required fields must remain in the
-  tarball.
+<Cards>
+  <Card
+    icon={<Upload />}
+    title="wpm publish"
+    href="/reference/cli/publish"
+    description="The only command that reads `.wpmignore`."
+  />
+  <Card
+    icon={<FileJson />}
+    title="wpm.json"
+    href="/fundamentals/wpm-json"
+    description="The manifest whose required fields must remain in the tarball."
+  />
+</Cards>

@@ -5,6 +5,15 @@ description:
   dependencies, locking versions, and publishing.
 ---
 
+import {
+  FileJson,
+  FolderPlus,
+  GitBranch,
+  KeyRound,
+  Layers,
+  Terminal,
+} from 'lucide-react';
+
 In about ten minutes, you'll go from a fresh wpm install to a working project
 with dependencies. You don't need a registry account for the first five steps.
 
@@ -195,11 +204,41 @@ always be reinstalled from `wpm.lock`.
 
 ## Where to go next
 
-| If you want to...                            | Read                                                            |
-| :------------------------------------------- | :-------------------------------------------------------------- |
-| Understand `wpm.json` in detail              | [`wpm.json` reference](../fundamentals/wpm-json)                |
-| Run wpm in CI                                | [CI/CD guide](../guides/ci)                                     |
-| Manage tokens and multiple accounts          | [Authentication](../guides/authentication)                      |
-| Learn the plugin/theme/mu-plugin differences | [Package types](../fundamentals/package-types)                  |
-| Browse all CLI commands                      | [`wpm`](../reference/cli)                                       |
-| Adopt wpm in an existing plugin or theme     | [`wpm init`](../reference/cli/init) (see the `--existing` mode) |
+<Cards>
+  <Card
+    icon={<FileJson />}
+    title="wpm.json reference"
+    href="/fundamentals/wpm-json"
+    description="Understand the manifest in detail."
+  />
+  <Card
+    icon={<GitBranch />}
+    title="CI/CD guide"
+    href="/guides/ci"
+    description="Run wpm in CI with reproducible installs."
+  />
+  <Card
+    icon={<KeyRound />}
+    title="Authentication"
+    href="/guides/authentication"
+    description="Manage tokens and multiple accounts."
+  />
+  <Card
+    icon={<Layers />}
+    title="Package types"
+    href="/fundamentals/package-types"
+    description="The plugin, theme, and mu-plugin distinctions."
+  />
+  <Card
+    icon={<Terminal />}
+    title="CLI reference"
+    href="/reference/cli"
+    description="Browse every command and flag."
+  />
+  <Card
+    icon={<FolderPlus />}
+    title="Adopt wpm in an existing project"
+    href="/reference/cli/init"
+    description="Use wpm init --existing to wrap an existing plugin or theme."
+  />
+</Cards>

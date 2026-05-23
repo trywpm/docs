@@ -5,6 +5,8 @@ description:
   optional metadata, dependency maps, and runtime configuration.
 ---
 
+import { Boxes, Cloud, Cpu, EyeOff, Lock } from 'lucide-react';
+
 `wpm.json` is the manifest at the root of every wpm package. It declares what
 the package is, what it depends on, and which versions of WordPress and PHP it
 targets. Every wpm command that touches the current project reads this file.
@@ -156,11 +158,35 @@ A few things to know:
 
 ## Related
 
-- [Dependencies](dependencies): how `dependencies` and `devDependencies`
-  interact with `wpm install`.
-- [Runtime compatibility](runtime): when wpm enforces `requires` during install,
-  and how `config.runtime` participates.
-- [`wpm.lock`](wpm-lock): the resolved snapshot that pairs with `wpm.json`.
-- [`.wpmignore`](wpmignore): controls what `wpm publish` packs.
-- [wpm registry](registry): dist tags, visibility, and the difference between
-  `private: true` and `--access private`.
+<Cards>
+  <Card
+    icon={<Boxes />}
+    title="Dependencies"
+    href="/fundamentals/dependencies"
+    description="How `dependencies` and `devDependencies` interact with `wpm install`."
+  />
+  <Card
+    icon={<Cpu />}
+    title="Runtime compatibility"
+    href="/fundamentals/runtime"
+    description="When wpm enforces `requires` during install, and how `config.runtime` participates."
+  />
+  <Card
+    icon={<Lock />}
+    title="wpm.lock"
+    href="/fundamentals/wpm-lock"
+    description="The resolved snapshot that pairs with `wpm.json`."
+  />
+  <Card
+    icon={<EyeOff />}
+    title=".wpmignore"
+    href="/fundamentals/wpmignore"
+    description="Controls what `wpm publish` packs."
+  />
+  <Card
+    icon={<Cloud />}
+    title="wpm registry"
+    href="/fundamentals/registry"
+    description="Dist tags, visibility, and the difference between `private: true` and `--access private`."
+  />
+</Cards>

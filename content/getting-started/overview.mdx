@@ -5,6 +5,26 @@ description:
   commands, project files, and your first install in under a minute.
 ---
 
+import {
+  BookOpen,
+  Boxes,
+  Bug,
+  Cloud,
+  Code2,
+  Cpu,
+  Download,
+  FileJson,
+  GitBranch,
+  KeyRound,
+  Layers,
+  Lightbulb,
+  Lock,
+  MessagesSquare,
+  Rocket,
+  Terminal,
+  Upload,
+} from 'lucide-react';
+
 wpm is an open source package manager for WordPress plugins and themes.
 
 It's built in Go for performance and reliability, with a globally distributed
@@ -83,37 +103,130 @@ wpm ls
 ## Learn wpm
 
 <Cards>
-  <Card title="Why wpm?" href="/getting-started/why-wpm" description="The longer rationale and design choices." />
-  <Card title="Installation" href="/getting-started/installation" description="Every install method, in detail." />
-  <Card title="First project" href="/getting-started/first-project" description="A ten-minute walkthrough." />
+  <Card
+    icon={<Lightbulb />}
+    title="Why wpm?"
+    href="/getting-started/why-wpm"
+    description="The longer rationale and design choices."
+  />
+  <Card
+    icon={<Download />}
+    title="Installation"
+    href="/getting-started/installation"
+    description="Every install method, in detail."
+  />
+  <Card
+    icon={<Rocket />}
+    title="First project"
+    href="/getting-started/first-project"
+    description="A ten-minute walkthrough."
+  />
 </Cards>
 
 ### Fundamentals
 
-Learn how the wpm ecosystem works:
+Learn how the wpm ecosystem works.
 
-- [Dependencies](../fundamentals/dependencies)
-- [`wpm.json`](../fundamentals/wpm-json)
-- [`wpm.lock`](../fundamentals/wpm-lock)
-- [Runtime compatibility](../fundamentals/runtime)
-- [Package types](../fundamentals/package-types)
-- [Registry](../fundamentals/registry)
+<Cards>
+  <Card
+    icon={<Boxes />}
+    title="Dependencies"
+    href="/fundamentals/dependencies"
+    description="The dependency maps and how wpm resolves them."
+  />
+  <Card
+    icon={<FileJson />}
+    title="wpm.json"
+    href="/fundamentals/wpm-json"
+    description="The project manifest schema."
+  />
+  <Card
+    icon={<Lock />}
+    title="wpm.lock"
+    href="/fundamentals/wpm-lock"
+    description="The lockfile that makes installs reproducible."
+  />
+  <Card
+    icon={<Cpu />}
+    title="Runtime compatibility"
+    href="/fundamentals/runtime"
+    description="`requires` and `config.runtime` for WordPress and PHP."
+  />
+  <Card
+    icon={<Layers />}
+    title="Package types"
+    href="/fundamentals/package-types"
+    description="`plugin`, `theme`, and `mu-plugin`."
+  />
+  <Card
+    icon={<Cloud />}
+    title="Registry"
+    href="/fundamentals/registry"
+    description="Dist tags, visibility, and where packages live."
+  />
+</Cards>
 
 ### Guides
 
-Common workflows and real-world usage:
+Common workflows and real-world usage.
 
-- [Authentication](../guides/authentication)
-- [Publishing](../guides/publishing)
-- [CI/CD](../guides/ci)
+<Cards>
+  <Card
+    icon={<KeyRound />}
+    title="Authentication"
+    href="/guides/authentication"
+    description="Tokens, login, and multiple identities."
+  />
+  <Card
+    icon={<Upload />}
+    title="Publishing"
+    href="/guides/publishing"
+    description="Ship plugins, themes, and mu-plugins to the registry."
+  />
+  <Card
+    icon={<GitBranch />}
+    title="CI/CD"
+    href="/guides/ci"
+    description="Run wpm in GitHub Actions, GitLab CI, and shell runners."
+  />
+</Cards>
 
 ### Reference
 
-- [CLI reference](../reference/cli)
-- [Glossary](../reference/glossary)
+<Cards>
+  <Card
+    icon={<Terminal />}
+    title="CLI reference"
+    href="/reference/cli"
+    description="Every command and flag."
+  />
+  <Card
+    icon={<BookOpen />}
+    title="Glossary"
+    href="/reference/glossary"
+    description="Terms that appear across the docs."
+  />
+</Cards>
 
 ## Community
 
-- GitHub: https://github.com/trywpm/cli
-- Issues: https://github.com/trywpm/cli/issues
-- Discussions: https://github.com/trywpm/cli/discussions
+<Cards>
+  <Card
+    icon={<Code2 />}
+    title="GitHub"
+    href="https://github.com/trywpm/cli"
+    description="Source code for the wpm CLI."
+  />
+  <Card
+    icon={<Bug />}
+    title="Issues"
+    href="https://github.com/trywpm/cli/issues"
+    description="Report bugs and request features."
+  />
+  <Card
+    icon={<MessagesSquare />}
+    title="Discussions"
+    href="https://github.com/trywpm/cli/discussions"
+    description="Ask questions and share ideas."
+  />
+</Cards>

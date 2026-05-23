@@ -5,6 +5,8 @@ description:
   multiple registry accounts from a single machine.
 ---
 
+import { Cloud, GitBranch, KeyRound, User } from 'lucide-react';
+
 This page covers everything you need to know about wpm tokens: how to get one,
 where wpm stores it, and how to manage multiple accounts.
 
@@ -190,10 +192,29 @@ anything, so it's a safe way to confirm that a token works.
 
 ## Related
 
-- [`wpm auth`](../reference/cli/auth): the parent command for `login` and
-  `logout`.
-- [`wpm whoami`](../reference/cli/whoami): the canonical "am I logged in?"
-  check.
-- [wpm registry](../fundamentals/registry): visibility, dist tags, and what
-  the registry does with your identity.
-- [CI/CD guide](ci): worked examples for running wpm from build pipelines.
+<Cards>
+  <Card
+    icon={<KeyRound />}
+    title="wpm auth"
+    href="/reference/cli/auth"
+    description="The parent command for `login` and `logout`."
+  />
+  <Card
+    icon={<User />}
+    title="wpm whoami"
+    href="/reference/cli/whoami"
+    description="The canonical &quot;am I logged in?&quot; check."
+  />
+  <Card
+    icon={<Cloud />}
+    title="wpm registry"
+    href="/fundamentals/registry"
+    description="Visibility, dist tags, and what the registry does with your identity."
+  />
+  <Card
+    icon={<GitBranch />}
+    title="CI/CD guide"
+    href="/guides/ci"
+    description="Worked examples for running wpm from build pipelines."
+  />
+</Cards>

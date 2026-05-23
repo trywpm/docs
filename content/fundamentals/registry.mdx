@@ -5,6 +5,8 @@ description:
   visibility, and distributes WordPress plugins and themes.
 ---
 
+import { FileJson, KeyRound, PackagePlus, Upload } from 'lucide-react';
+
 The wpm registry is the server that hosts published packages and serves them to
 `wpm install`. By default wpm talks to `registry.wpm.so`. You can point it at a
 different deployment with the global `--registry` flag.
@@ -144,9 +146,29 @@ registry, and any command with `--config ~/.wpm-prod` targets production.
 
 ## Related
 
-- [`wpm auth`](../reference/cli/auth): how credentials are obtained and stored.
-- [`wpm publish`](../reference/cli/publish): the command that uploads new
-  versions and sets the dist tag and visibility.
-- [`wpm install`](../reference/cli/install): the command that reads manifests
-  and downloads tarballs.
-- [`wpm.json`](wpm-json): the `private` flag, distinct from registry visibility.
+<Cards>
+  <Card
+    icon={<KeyRound />}
+    title="wpm auth"
+    href="/reference/cli/auth"
+    description="How credentials are obtained and stored."
+  />
+  <Card
+    icon={<Upload />}
+    title="wpm publish"
+    href="/reference/cli/publish"
+    description="Upload new versions and set the dist tag and visibility."
+  />
+  <Card
+    icon={<PackagePlus />}
+    title="wpm install"
+    href="/reference/cli/install"
+    description="Read manifests and download tarballs from the registry."
+  />
+  <Card
+    icon={<FileJson />}
+    title="wpm.json"
+    href="/fundamentals/wpm-json"
+    description="The `private` flag, distinct from registry visibility."
+  />
+</Cards>
