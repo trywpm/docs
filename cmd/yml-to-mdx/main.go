@@ -467,9 +467,15 @@ func rendermarkdown(doc cmdDoc, byCommand map[string]cmdDoc) (string, error) {
 			if !exists || child.Hidden {
 				continue
 			}
-			relative := strings.Join(strings.Split(childCmd, " ")[depth:], "/")
-			link := fmt.Sprintf("[`%s`](./%s)", childCmd, relative)
 
+			relative := strings.Join(strings.Split(childCmd, " ")[depth:], "/")
+			if len(child.Cname) > 0 {
+				relative += "/index.mdx"
+			} else {
+				relative += ".mdx"
+			}
+
+			link := fmt.Sprintf("[`%s`](./%s)", childCmd, relative)
 			rows = append(rows, []string{link, child.Short})
 		}
 
