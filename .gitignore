@@ -21,3 +21,4 @@ node_modules/
 !source.config.ts
 !vite.config.ts
 !tsconfig.json
+!postcss.config.mjs
