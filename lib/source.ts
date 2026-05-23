@@ -32,14 +32,10 @@ export const source = loader({
             return node;
           }
 
-          const remaining = node.children.filter((child) => child !== overview);
-          const idx = remaining.indexOf(gettingStarted);
-          remaining[idx] = {
-            ...gettingStarted,
-            children: [overview, ...gettingStarted.children],
-          };
+          gettingStarted.children = [overview, ...gettingStarted.children];
+          node.children = node.children.filter((child) => child !== overview);
 
-          return { ...node, children: remaining };
+          return node;
         },
       },
     ],
