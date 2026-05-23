@@ -71,7 +71,7 @@ After login, wpm writes two fields into your client config file:
 The file lives at `~/.wpm/config.json` by default. You can move it with the
 `--config` flag or the `WPM_CONFIG` environment variable.
 
-<Callout type="error" title="Caution">
+<Callout type="warn" title="Keep tokens secret">
   The base64 encoding of `authToken` is obfuscation, not encryption. Anyone with
   read access to `config.json` can recover your token. Treat the file like an
   SSH private key.

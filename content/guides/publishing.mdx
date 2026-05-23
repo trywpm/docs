@@ -142,7 +142,7 @@ The default is `private`. To change visibility on an already-published version,
 publish a new version with the new `--access` value; there is no separate
 "change visibility" command.
 
-<Callout type="info" title="Important">
+<Callout type="warn" title="Publishing and visibility are separate">
   `--access private` is not the same as `"private": true` in `wpm.json`. The
   flag sets the registry's visibility. The manifest flag prevents publishing
   entirely. See
@@ -151,7 +151,7 @@ publish a new version with the new `--access` value; there is no separate
 
 ## Republishing the same version
 
-<Callout type="error" title="Caution">
+<Callout type="warn" title="Published versions cannot be changed">
   A published version cannot be replaced. The registry rejects any publish for a
   version it already holds, and yanked versions stay reserved (you cannot reuse
   the number for a new build).

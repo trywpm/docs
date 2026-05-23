@@ -39,7 +39,7 @@ package, the old entry goes away.
 That's it. The dependency value does not accept SemVer ranges, carets, or
 tildes. This is a deliberate design choice, not a limitation we plan to remove.
 
-<Callout type="info" title="Important">
+<Callout type="info" title="Exact dependency versions">
   WordPress plugins and themes are not pure libraries. They can change database
   schema, write options, register cron jobs, and modify content. A solver cannot
   tell whether a "compatible" upgrade is safe for _your_ site, because that
