@@ -12,7 +12,7 @@ import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/components/mdx';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
-import { gitConfig } from '@/lib/shared';
+import { appName, docsPathPrefix, gitConfig } from '@/lib/shared';
 
 export default async function Page(props: PageProps<'/[[...slug]]'>) {
   const params = await props.params;
@@ -63,11 +63,24 @@ export async function generateMetadata(props: PageProps<'/[[...slug]]'>): Promis
     notFound();
   }
 
+  const canonicalPath = page.url === '/' ? docsPathPrefix : `${docsPathPrefix}${page.url}`;
+  const imageUrl = getPageImage(page).url;
+
   return {
     title: page.data.title,
     description: page.data.description,
+    alternates: {
+      canonical: canonicalPath,
+    },
     openGraph: {
-      images: getPageImage(page).url,
+      type: 'article',
+      siteName: appName,
+      locale: 'en_US',
+      url: canonicalPath,
+      images: imageUrl,
+    },
+    twitter: {
+      images: imageUrl,
     },
   };
 }
