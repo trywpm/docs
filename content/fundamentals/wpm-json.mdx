@@ -5,6 +5,7 @@ description:
   optional metadata, dependency maps, and runtime configuration.
 ---
 
+import { TypeTable } from 'fumadocs-ui/components/type-table';
 import { Boxes, Cloud, Cpu, EyeOff, Lock } from 'lucide-react';
 
 `wpm.json` is the manifest at the root of every wpm package. It declares what
@@ -66,11 +67,40 @@ not sure what a section looks like.
 
 ### Required fields
 
-| Field     | Type   | Rules                                                                                 |
-| :-------- | :----- | :------------------------------------------------------------------------------------ |
-| `name`    | string | 3 to 164 characters; lowercase alphanumeric and hyphens (`^[a-z0-9]+(-[a-z0-9]+)*$`). |
-| `version` | string | Strict SemVer `X.Y.Z`; 5 to 64 characters; no `v` prefix.                             |
-| `type`    | string | One of `plugin`, `theme`, or `mu-plugin`.                                             |
+<TypeTable
+  type={{
+    name: {
+      type: 'string',
+      required: true,
+      description: (
+        <>
+          3 to 164 characters; lowercase alphanumeric and hyphens. Pattern:{' '}
+          <code>^[a-z0-9]+(-[a-z0-9]+)*$</code>.
+        </>
+      ),
+    },
+    version: {
+      type: 'string',
+      required: true,
+      description: (
+        <>
+          Strict SemVer <code>X.Y.Z</code>; 5 to 64 characters; no{' '}
+          <code>v</code> prefix.
+        </>
+      ),
+    },
+    type: {
+      type: 'string',
+      required: true,
+      description: (
+        <>
+          One of <code>plugin</code>, <code>theme</code>, or{' '}
+          <code>mu-plugin</code>.
+        </>
+      ),
+    },
+  }}
+/>
 
 wpm rejects the entire manifest if any required field is missing or invalid.
 `wpm publish` always validates first. Commands that change the file
@@ -78,14 +108,50 @@ wpm rejects the entire manifest if any required field is missing or invalid.
 
 ### Optional metadata
 
-| Field         | Type     | Rules                                                                                                  |
-| :------------ | :------- | :----------------------------------------------------------------------------------------------------- |
-| `description` | string   | 3 to 512 characters.                                                                                   |
-| `private`     | boolean  | When `true`, `wpm publish` refuses to upload. Use it as a tripwire on internal-only packages.          |
-| `license`     | string   | 3 to 100 characters. SPDX-style identifiers like `GPL-2.0-or-later` are conventional but not enforced. |
-| `homepage`    | string   | A `http` or `https` URL, 10 to 200 characters.                                                         |
-| `tags`        | string[] | Up to 5 entries; each 2 to 64 characters; duplicates rejected.                                         |
-| `team`        | string[] | Up to 100 entries; each 2 to 100 characters; duplicates rejected.                                      |
+<TypeTable
+  type={{
+    description: {
+      type: 'string',
+      description: '3 to 512 characters.',
+    },
+    private: {
+      type: 'boolean',
+      description: (
+        <>
+          When <code>true</code>, <code>wpm publish</code> refuses to upload.
+          Use it as a tripwire on internal-only packages.
+        </>
+      ),
+    },
+    license: {
+      type: 'string',
+      description: (
+        <>
+          3 to 100 characters. SPDX-style identifiers like{' '}
+          <code>GPL-2.0-or-later</code> are conventional but not enforced.
+        </>
+      ),
+    },
+    homepage: {
+      type: 'string',
+      description: (
+        <>
+          A <code>http</code> or <code>https</code> URL, 10 to 200 characters.
+        </>
+      ),
+    },
+    tags: {
+      type: 'string[]',
+      description:
+        'Up to 5 entries; each 2 to 64 characters; duplicates rejected.',
+    },
+    team: {
+      type: 'string[]',
+      description:
+        'Up to 100 entries; each 2 to 100 characters; duplicates rejected.',
+    },
+  }}
+/>
 
 `tags` are short keywords the registry uses for search and discovery. Pick words
 a consumer would type when looking for your package, like `seo`, `caching`, or
@@ -101,10 +167,23 @@ wpm rejects ASCII control characters and a few look-alike Unicode code points
 
 ### Dependencies
 
-| Field             | Type                       | Notes                                                                  |
-| :---------------- | :------------------------- | :--------------------------------------------------------------------- |
-| `dependencies`    | `object<string, string>`   | Production dependencies. Installed by default.                         |
-| `devDependencies` | `object<string, string>`   | Development dependencies. Skipped when `wpm install --no-dev` is used. |
+<TypeTable
+  type={{
+    dependencies: {
+      type: 'object<string, string>',
+      description: 'Production dependencies. Installed by default.',
+    },
+    devDependencies: {
+      type: 'object<string, string>',
+      description: (
+        <>
+          Development dependencies. Skipped when{' '}
+          <code>wpm install --no-dev</code> is used.
+        </>
+      ),
+    },
+  }}
+/>
 
 Each key must satisfy the package name rules. Each value must be strict SemVer
 or `*`. When you publish a package, wpm caps each map at 16 entries as a
@@ -114,31 +193,82 @@ for the full behavior, including the publish-time limit and how `wpm install`,
 
 ### Compatibility
 
-| Field      | Type   | Notes                                                                                 |
-| :--------- | :----- | :------------------------------------------------------------------------------------ |
-| `requires` | object | What your package needs from WordPress and PHP. See [Runtime compatibility](runtime). |
+<TypeTable
+  type={{
+    requires: {
+      type: 'object',
+      description: (
+        <>
+          What your package needs from WordPress and PHP. See{' '}
+          <a href="/fundamentals/runtime">Runtime compatibility</a>.
+        </>
+      ),
+    },
+  }}
+/>
 
 `requires.wp` and `requires.php` are SemVer constraint strings, for example
 `>=6.0` or `>=7.4 <8.2`. Leave a field empty to mean "no opinion."
 
 ### Build and runtime configuration
 
-| Field     | Type                       | Notes                                                                                              |
-| :-------- | :------------------------- | :------------------------------------------------------------------------------------------------- |
-| `config`  | object                     | Project-relative paths and the runtime you're developing against.                                  |
-| `bin`     | `object<string, string>`   | Reserved. Binary linking is declared by some packages but not yet wired into install.              |
-| `scripts` | `object<string, string>`   | Reserved. Lifecycle scripts are not yet wired up; `wpm install --ignore-scripts` is a no-op today. |
+<TypeTable
+  type={{
+    config: {
+      type: 'object',
+      description:
+        "Project-relative paths and the runtime you're developing against. See fields below.",
+    },
+    bin: {
+      type: 'object<string, string>',
+      description:
+        'Reserved. Binary linking is declared by some packages but not yet wired into install.',
+    },
+    scripts: {
+      type: 'object<string, string>',
+      description: (
+        <>
+          Reserved. Lifecycle scripts are not yet wired up;{' '}
+          <code>wpm install --ignore-scripts</code> is a no-op today.
+        </>
+      ),
+    },
+  }}
+/>
 
 The `config` object accepts:
 
-- `bin-dir` (string, default `wp-bin`): where wpm would place executable links.
-  Currently informational; binary linking is not yet wired up. Must be a
-  relative, in-tree path.
-- `content-dir` (string, default `wp-content`): where `wpm install` extracts
-  packages. Must be a relative, in-tree path.
-- `runtime` (object): the WordPress and PHP versions your project runs against.
-  Setting either `runtime.wp` or `runtime.php` turns on a strict compatibility
-  check during `wpm install`. See [Runtime compatibility](runtime).
+<TypeTable
+  type={{
+    'bin-dir': {
+      type: 'string',
+      default: 'wp-bin',
+      description:
+        'Where wpm would place executable links. Currently informational; binary linking is not yet wired up. Must be a relative, in-tree path.',
+    },
+    'content-dir': {
+      type: 'string',
+      default: 'wp-content',
+      description: (
+        <>
+          Where <code>wpm install</code> extracts packages. Must be a relative,
+          in-tree path.
+        </>
+      ),
+    },
+    runtime: {
+      type: 'object',
+      description: (
+        <>
+          The WordPress and PHP versions your project runs against. Setting
+          either <code>runtime.wp</code> or <code>runtime.php</code> turns on a
+          strict compatibility check during <code>wpm install</code>. See{' '}
+          <a href="/fundamentals/runtime">Runtime compatibility</a>.
+        </>
+      ),
+    },
+  }}
+/>
 
 ## Editing the file by hand
 
