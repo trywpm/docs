@@ -5,6 +5,7 @@ import { cp, mkdir, readdir, rename, rm } from 'node:fs/promises';
 const OUT_DIR = 'out';
 const NESTED_DIR = join(OUT_DIR, 'docs');
 const NOT_FOUND_FILE = '404.html';
+const ASSETS_ROOT_FILES = new Set(['_headers', '_redirects']);
 
 async function main(): Promise<void> {
   if (!existsSync(OUT_DIR)) {
@@ -19,7 +20,7 @@ async function main(): Promise<void> {
 
   const entries: string[] = await readdir(OUT_DIR);
   for (const entry of entries) {
-    if (entry === 'docs') {
+    if (entry === 'docs' || ASSETS_ROOT_FILES.has(entry)) {
       continue;
     }
     await rename(join(OUT_DIR, entry), join(NESTED_DIR, entry));
