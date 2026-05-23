@@ -5,95 +5,112 @@ description:
   completion setup and where wpm stores its files.
 ---
 
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 import { FileJson, GitBranch, Rocket } from 'lucide-react';
 
 wpm ships as a single static binary. There are no runtime dependencies, no PHP
 requirement on the machine that runs wpm, and no per-project toolchain. Pick the
 install method that fits your environment.
 
-## Linux and macOS
+## Install
 
-The recommended method is the install script. It detects your platform,
-downloads the matching release binary from GitHub, and drops it on your `PATH`.
+Pick the install method that fits your environment.
 
-```sh
-curl -fsSL https://wpm.so/install | bash
-```
+<Tabs
+  items={[
+    'Linux & macOS',
+    'Windows',
+    'Docker',
+    'Go toolchain',
+    'Build from source',
+  ]}
+>
+  <Tab value="Linux & macOS">
+    The recommended method is the install script. It detects your platform,
+    downloads the matching release binary from GitHub, and drops it on your
+    `PATH`.
 
-The script removes any previous binary at `/usr/local/bin/wpm` (using `sudo`)
-before installing the new one. You can also pin a specific release:
+    ```sh
+    curl -fsSL https://wpm.so/install | bash
+    ```
 
-```sh
-curl -fsSL https://wpm.so/install | bash -s -- 0.1.0
-```
+    The script removes any previous binary at `/usr/local/bin/wpm` (using
+    `sudo`) before installing the new one. You can also pin a specific release:
 
-Supported platforms:
+    ```sh
+    curl -fsSL https://wpm.so/install | bash -s -- 0.1.0
+    ```
 
-| OS    | Architectures                            |
-| :---- | :--------------------------------------- |
-| Linux | `amd64`, `arm64`                         |
-| macOS | `amd64` (Intel), `arm64` (Apple Silicon) |
+    Supported platforms:
 
-If your platform isn't on the list, build from source (see below).
+    | OS    | Architectures                            |
+    | :---- | :--------------------------------------- |
+    | Linux | `amd64`, `arm64`                         |
+    | macOS | `amd64` (Intel), `arm64` (Apple Silicon) |
 
-## Windows
+    If your platform isn't on the list, use the **Build from source** tab.
+  </Tab>
 
-Run from PowerShell:
+  <Tab value="Windows">
+    Run from PowerShell:
 
-```powershell
-powershell -c "irm wpm.so/install.ps1|iex"
-```
+    ```powershell
+    powershell -c "irm wpm.so/install.ps1|iex"
+    ```
 
-This pulls the Windows release binary and installs it on your `PATH`.
+    This pulls the Windows release binary and installs it on your `PATH`.
+  </Tab>
 
-## Docker
+  <Tab value="Docker">
+    A pre-built image is available on Docker Hub:
 
-A pre-built image is available on Docker Hub:
+    ```sh
+    docker pull trywpm/cli
+    ```
 
-```sh
-docker pull trywpm/cli
-```
+    Run wpm against your project by mounting it as a volume:
 
-Run wpm against your project by mounting it as a volume:
+    ```sh
+    docker run --rm -v "$PWD":/work -w /work trywpm/cli wpm install
+    ```
 
-```sh
-docker run --rm -v "$PWD":/work -w /work trywpm/cli wpm install
-```
+    The image is useful for CI pipelines that don't want to manage binaries
+    themselves, and for ephemeral environments where you don't want wpm on the
+    host.
+  </Tab>
 
-The image is useful for CI pipelines that don't want to manage binaries
-themselves, and for ephemeral environments where you don't want wpm on the host.
+  <Tab value="Go toolchain">
+    If you have Go installed, you can install wpm directly from source:
 
-## Go toolchain
+    ```sh
+    go install go.wpm.so/cli/cmd/wpm@latest
+    ```
 
-If you have Go installed, you can install wpm directly from source:
+    The binary lands in `$GOPATH/bin` (typically `~/go/bin`). Make sure that
+    directory is on your `PATH`. To pin a release:
 
-```sh
-go install go.wpm.so/cli/cmd/wpm@latest
-```
+    ```sh
+    go install go.wpm.so/cli/cmd/wpm@v0.1.0
+    ```
+  </Tab>
 
-The binary lands in `$GOPATH/bin` (typically `~/go/bin`). Make sure that
-directory is on your `PATH`. To pin a release:
+  <Tab value="Build from source">
+    For development, a fork, or an unsupported platform:
 
-```sh
-go install go.wpm.so/cli/cmd/wpm@v0.1.0
-```
+    ```sh
+    git clone https://github.com/trywpm/cli wpm
+    cd wpm
+    go build -o wpm ./cmd/wpm
+    ```
 
-## Build from source
+    The resulting `wpm` binary in the current directory is fully functional.
+    Move it onto your `PATH` to use it from anywhere:
 
-For development, a fork, or an unsupported platform:
-
-```sh
-git clone https://github.com/trywpm/cli wpm
-cd wpm
-go build -o wpm ./cmd/wpm
-```
-
-The resulting `wpm` binary in the current directory is fully functional. Move it
-onto your `PATH` to use it from anywhere:
-
-```sh
-sudo mv wpm /usr/local/bin/wpm
-```
+    ```sh
+    sudo mv wpm /usr/local/bin/wpm
+    ```
+  </Tab>
+</Tabs>
 
 ## Shell completion
 
@@ -143,21 +160,33 @@ wpm completion <bash|zsh|fish|powershell>
 
 One-time setup per shell:
 
-```sh
-# bash
-wpm completion bash | sudo tee /etc/bash_completion.d/wpm > /dev/null
+<Tabs items={['bash', 'zsh', 'fish', 'powershell']}>
+  <Tab value="bash">
+    ```sh
+    wpm completion bash | sudo tee /etc/bash_completion.d/wpm > /dev/null
+    ```
+  </Tab>
 
-# zsh (with compinit enabled)
-wpm completion zsh > "${fpath[1]}/_wpm"
+  <Tab value="zsh">
+    With `compinit` enabled:
 
-# fish
-wpm completion fish > ~/.config/fish/completions/wpm.fish
-```
+    ```sh
+    wpm completion zsh > "${fpath[1]}/_wpm"
+    ```
+  </Tab>
 
-```powershell
-# powershell
-wpm completion powershell | Out-File -Encoding utf8 "$PROFILE.d\wpm.ps1"
-```
+  <Tab value="fish">
+    ```sh
+    wpm completion fish > ~/.config/fish/completions/wpm.fish
+    ```
+  </Tab>
+
+  <Tab value="powershell">
+    ```powershell
+    wpm completion powershell | Out-File -Encoding utf8 "$PROFILE.d\wpm.ps1"
+    ```
+  </Tab>
+</Tabs>
 
 For a one-off in the current session, source the output instead:
 
