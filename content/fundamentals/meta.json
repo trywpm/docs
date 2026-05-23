@@ -1,5 +1,6 @@
 {
   "title": "Fundamentals",
+  "icon": "Boxes",
   "pages": [
     "wpm-json",
     "wpm-lock",
