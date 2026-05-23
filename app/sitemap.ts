@@ -8,9 +8,6 @@ type Page = ReturnType<typeof source.getPages>[number];
 
 function priorityFor(page: Page): number {
   const slugs = page.slugs;
-  if (slugs.length === 0) {
-    return 1.0;
-  }
   if (slugs.length === 1) {
     return 0.9;
   }
@@ -28,12 +25,15 @@ function changeFrequencyFor(page: Page): MetadataRoute.Sitemap[number]['changeFr
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const entries: MetadataRoute.Sitemap = source.getPages().map((page) => ({
-    url: `${siteUrl}${docsPathPrefix}${page.url}`,
-    lastModified: page.data.lastModified ?? undefined,
-    changeFrequency: changeFrequencyFor(page),
-    priority: priorityFor(page),
-  }));
+  const entries: MetadataRoute.Sitemap = source
+    .getPages()
+    .filter((page) => page.slugs.length > 0)
+    .map((page) => ({
+      url: `${siteUrl}${docsPathPrefix}${page.url}`,
+      lastModified: page.data.lastModified ?? undefined,
+      changeFrequency: changeFrequencyFor(page),
+      priority: priorityFor(page),
+    }));
 
   entries.sort((a, b) => a.url.localeCompare(b.url));
   return entries;
