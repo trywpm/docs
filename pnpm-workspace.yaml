@@ -12,3 +12,4 @@ packageConfigs:
 allowBuilds:
   esbuild: false
   sharp: false
+  workerd: false
