@@ -8,10 +8,10 @@ type Page = ReturnType<typeof source.getPages>[number];
 
 function priorityFor(page: Page): number {
   const slugs = page.slugs;
-  if (slugs.length === 2 && slugs[0] === 'getting-started' && slugs[1] === 'overview') {
+  if (slugs.length === 0) {
     return 1.0;
   }
-  if (slugs.length <= 1) {
+  if (slugs.length === 1) {
     return 0.9;
   }
   if (slugs.length === 2) {
