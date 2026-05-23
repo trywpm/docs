@@ -8,6 +8,12 @@ import { Provider } from '@/components/provider';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  icons: [
+    {
+      url: 'https://wpm.so/favicon.svg',
+      type: 'image/svg+xml',
+    },
+  ],
   title: {
     default: `wpm - Modern package management for WordPress`,
     template: `%s - ${appName}`,
@@ -34,7 +40,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
         <Banner id="wpm-status-banner" variant="normal">
           wpm is still under development. Expect breaking changes as we work toward a stable
