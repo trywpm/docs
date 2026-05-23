@@ -1,19 +1,55 @@
-import { docs } from 'collections/server';
-import { loader } from 'fumadocs-core/source';
 import { icons } from 'lucide-react';
 import { createElement } from 'react';
+import { docs } from 'collections/server';
+import { loader } from 'fumadocs-core/source';
 
 import { docsContentRoute, docsImageRoute, docsRoute } from './shared';
+
+function isLucideIcon(name: string): name is keyof typeof icons {
+  return name in icons;
+}
 
 export const source = loader({
   source: docs.toFumadocsSource(),
   plugins: [],
   baseUrl: docsRoute,
+  pageTree: {
+    transformers: [
+      {
+        root(node) {
+          const overview = node.children.find(
+            (child) => child.type === 'page' && (child.url === '/' || child.url === ''),
+          );
+          const gettingStartedIdx = node.children.findIndex(
+            (child) => child.type === 'folder' && child.name === 'Getting started',
+          );
+          if (!overview || gettingStartedIdx === -1) {
+            return node;
+          }
+
+          const gettingStarted = node.children[gettingStartedIdx];
+          if (gettingStarted.type !== 'folder') {
+            return node;
+          }
+
+          const remaining = node.children.filter((child) => child !== overview);
+          const idx = remaining.indexOf(gettingStarted);
+          remaining[idx] = {
+            ...gettingStarted,
+            children: [overview, ...gettingStarted.children],
+          };
+
+          return { ...node, children: remaining };
+        },
+      },
+    ],
+  },
   icon(icon) {
-    if (icon && icon in icons) {
-      return createElement(icons[icon as keyof typeof icons]);
+    if (!icon || !isLucideIcon(icon)) {
+      return null;
     }
-    return null;
+
+    return createElement(icons[icon]);
   },
 });
 
