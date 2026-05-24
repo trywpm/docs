@@ -6,6 +6,8 @@ export const docsContentRoute = '/llms.mdx/docs';
 export const siteUrl = 'https://wpm.so';
 export const docsPathPrefix = '/docs';
 
+export const algoliaIndexName = 'wpm-site';
+
 export const gitConfig = {
   user: 'trywpm',
   repo: 'docs',
