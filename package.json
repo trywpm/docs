@@ -12,7 +12,7 @@
     "deploy": "pnpm build && wrangler deploy"
   },
   "dependencies": {
-    "@orama/orama": "3.1.18",
+    "algoliasearch": "5.52.1",
     "fumadocs-core": "16.9.0",
     "fumadocs-mdx": "15.0.7",
     "fumadocs-ui": "16.9.0",
